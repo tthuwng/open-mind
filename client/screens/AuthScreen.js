@@ -30,18 +30,19 @@ const AuthScreen = ({ navigation }) => {
         className="connectMetamaskButton"
       />
       {active ? (
-        <Text>
-          Connected with <b>{account}</b>
-        </Text>
+        <>
+          <Text>
+            Connected with <b>{account}</b>
+          </Text>
+          <Button
+            title="Go to Recording Screen"
+            onPress={() => navigation.navigate("Recording", { name: "Jane" })}
+          />
+        </>
       ) : (
         <Text>Not connected</Text>
       )}
       <Button title="Disconnect" onPress={disconnect} />
-
-      <Button
-        title="Go to Recording Screen"
-        onPress={() => navigation.navigate("Recording", { name: "Jane" })}
-      />
     </>
   );
 };
