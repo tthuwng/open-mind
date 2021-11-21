@@ -7,24 +7,32 @@ import { StyleSheet, Text, View } from "react-native";
 import AuthScreen from "./screens/AuthScreen";
 import RecordingScreen from "./screens/RecordingScreen";
 import InsightScreen from "./screens/InsightScreen";
+import { Web3ReactProvider } from "@web3-react/core";
+import Web3 from "web3";
+
+function getLibrary(provider) {
+  return new Web3(provider);
+}
 
 export default function App() {
   const Stack = createNativeStackNavigator();
 
   return (
     <>
-      <NavigationContainer>
-        <Stack.Navigator>
-          {/* <Stack.Screen
+      <Web3ReactProvider getLibrary={getLibrary}>
+        <NavigationContainer>
+          <Stack.Navigator>
+            {/* <Stack.Screen
       name='Home'
       component={HomeScreen}
       options={{ title: 'Home' }}
     /> */}
-          <Stack.Screen name="Auth" component={AuthScreen}></Stack.Screen>
-          <Stack.Screen name="Recording" component={RecordingScreen} />
-          <Stack.Screen name="Insight" component={InsightScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
+            <Stack.Screen name="Auth" component={AuthScreen}></Stack.Screen>
+            <Stack.Screen name="Recording" component={RecordingScreen} />
+            <Stack.Screen name="Insight" component={InsightScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </Web3ReactProvider>
     </>
     // <View style={styles.container}>
     //   <Text>Open up App.js to start working on your app!</Text>
