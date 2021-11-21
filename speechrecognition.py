@@ -56,6 +56,6 @@ def load_data(test_size=0.2):
 
 #Split the dataset into training data and test data
 x_train,x_test,y_train,y_test=load_data(test_size=0.25)
-print('The shape of the training data is', x_train.shape[0])
-print('The shape of the training data is', x_test.shape[0])
-print('The number of features extracted is,', x_train.shape[1])
+print('Shape of the training data =', x_train.shape[0])
+print('Shape of the training data =', x_test.shape[0])
+print('Number of features extracted =', x_train.shape[1])
