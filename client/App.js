@@ -1,29 +1,39 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import AuthScreen from './screens/AuthScreen';
-import RecordingScreen from './screens/RecordingScreen';
-import InsightScreen from './screens/InsightScreen';
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import AuthScreen from "./screens/AuthScreen";
+import RecordingScreen from "./screens/RecordingScreen";
+import InsightScreen from "./screens/InsightScreen";
+import { Web3ReactProvider } from "@web3-react/core";
+import Web3 from "web3";
+
+function getLibrary(provider) {
+  return new Web3(provider);
+}
 
 export default function App() {
   const Stack = createNativeStackNavigator();
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        {/* <Stack.Screen
-          name='Home'
-          component={HomeScreen}
-          options={{ title: 'Home' }}
-        /> */}
-        <Stack.Screen name='Auth' component={AuthScreen} />
-        <Stack.Screen name='Recording' component={RecordingScreen} />
-        <Stack.Screen name='Insight' component={InsightScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <>
+      <Web3ReactProvider getLibrary={getLibrary}>
+        <NavigationContainer>
+          <Stack.Navigator>
+            {/* <Stack.Screen
+      name='Home'
+      component={HomeScreen}
+      options={{ title: 'Home' }}
+    /> */}
+            <Stack.Screen name="Auth" component={AuthScreen}></Stack.Screen>
+            <Stack.Screen name="Recording" component={RecordingScreen} />
+            <Stack.Screen name="Insight" component={InsightScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </Web3ReactProvider>
+    </>
     // <View style={styles.container}>
     //   <Text>Open up App.js to start working on your app!</Text>
     //   <StatusBar style="auto" />
@@ -34,8 +44,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
