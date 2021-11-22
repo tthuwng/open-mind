@@ -1,5 +1,14 @@
 # Open Mind
+### Run
+```bash
+yarn
+yarn add @web3-react/injected-connector
+yarn add @web3-react/core
+yarn add web3
+yarn start
+```
 
+### Summary
 Mental health is always an alarming and significant problem, especially in this era where there are tons of distractions and horrible things happening around us, both in the real world and digital world. Thus it is more important than ever that we should focus on our mental health.
 
 - 1 in 5 Americans has experienced some form of mental illness
